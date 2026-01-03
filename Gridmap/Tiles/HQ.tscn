@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcpr06467jkd4"]
+
+[ext_resource type="PackedScene" uid="uid://dakls6sptvs7p" path="res://Gridmap/Tiles/BaseTile.tscn" id="1_bo6lp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qe2ci"]
+albedo_color = Color(0.8346671, 0.07455332, 0.47183478, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_issp8"]
+material = SubResource("StandardMaterial3D_qe2ci")
+
+[node name="HQ" instance=ExtResource("1_bo6lp")]
+
+[node name="Mesh" parent="." index="1"]
+mesh = SubResource("BoxMesh_issp8")

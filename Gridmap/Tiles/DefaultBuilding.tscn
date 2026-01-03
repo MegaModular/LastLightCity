@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgffw1sf8fump"]
+
+[ext_resource type="PackedScene" uid="uid://dakls6sptvs7p" path="res://Gridmap/Tiles/BaseTile.tscn" id="1_1yt72"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1yt72"]
+height = 0.5
+
+[node name="DefaultBuilding" instance=ExtResource("1_1yt72")]
+
+[node name="Mesh" parent="." index="1"]
+mesh = SubResource("CylinderMesh_1yt72")
