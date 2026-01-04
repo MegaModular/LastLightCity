@@ -19,14 +19,20 @@ func createBuilding(cell):
 	var rng = decideBuilding()
 
 	var scene
+	var enumType
 	if rng == 0:
 		scene = defaultScene.instantiate()
+		enumType = BuildingManager.BUILDINGTYPE.BUILDING
 	if rng == 1:
 		scene = emptyScene.instantiate()
+		enumType = BuildingManager.BUILDINGTYPE.EMPTY
 	if cell == Vector2i(0, 0):
 		scene = hqScene.instantiate()
+		enumType = BuildingManager.BUILDINGTYPE.HQ
 	
 	scene.position = BuildingManager.gridToWorld(cell)
+	scene.buildingType = enumType
+	scene.cell = cell
 	self.add_child(scene)
 	BuildingManager.registerBuilding(cell, scene)
 
