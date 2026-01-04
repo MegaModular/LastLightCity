@@ -68,6 +68,41 @@ func handle_zoom(delta):
 	camera.position.y = lerp(camera.position.y, zoom_target, 10 * delta)
 	camera.position.z = lerp(camera.position.z, zoom_target, 10 * delta)
 
+func _input(event: InputEvent):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and Input.is_action_pressed("lmb"):
+		handle_click(event.position)
+	if event is InputEventMouseButton and event.pressed and Input.is_action_pressed("rmb"):
+		BuildingManager.clearSelection()
+
 func snap_to_grid():
 	global_position.x = snapped(global_position.x, grid_snap)
 	global_position.z = snapped(global_position.z, grid_snap)
+
+func handle_click(mouse_pos: Vector2):
+	var ray_origin = camera.project_ray_origin(mouse_pos)
+	var ray_dir = camera.project_ray_normal(mouse_pos)
+	
+	var space_state = get_world_3d().direct_space_state
+	
+	var query = PhysicsRayQueryParameters3D.create(
+		ray_origin,
+		ray_origin + ray_dir * 1000
+	)
+	
+	var result = space_state.intersect_ray(query)
+	
+	if result.is_empty():
+		BuildingManager.clearSelection()
+		return
+
+	var hit_pos: Vector3 = result.position
+	select_at_world_position(hit_pos)
+
+func select_at_world_position(world_pos: Vector3):
+	var cell = BuildingManager.worldToGrid(world_pos)
+	var building = BuildingManager.getBuildingAtCell(cell)
+
+	if building:
+		BuildingManager.selectBuildingAtCell(cell)
+	else:
+		BuildingManager.clearSelection()
