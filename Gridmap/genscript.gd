@@ -4,7 +4,7 @@ extends Node3D
 @onready var defaultScene = preload('res://Gridmap/Tiles/DefaultBuilding.tscn')
 @onready var emptyScene = preload('res://Gridmap/Tiles/Empty.tscn')
 
-var gridSize : int = 4
+var gridSize : int = 50
 
 func _ready() -> void:
 	randomize()
@@ -35,6 +35,8 @@ func createBuilding(cell):
 	scene.cell = cell
 	self.add_child(scene)
 	BuildingManager.registerBuilding(cell, scene)
+	if enumType == BuildingManager.BUILDINGTYPE.HQ:
+		BuildingManager.claimBuilding(cell)
 
 func decideBuilding():
 	return randi_range(0, 1)

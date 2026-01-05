@@ -16,7 +16,6 @@ layout_mode = 0
 offset_left = 1451.0
 offset_right = 1922.0
 offset_bottom = 1082.0
-mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer"]
 layout_mode = 2
@@ -34,3 +33,15 @@ text = "Tile"
 
 [node name="Health" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="IsClaimed" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClaimBuilding" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Claim Building"
+
+[connection signal="mouse_entered" from="PanelContainer" to="." method="_on_panel_container_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer" to="." method="_on_panel_container_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/ClaimBuilding" to="." method="_on_claim_building_mouse_entered"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ClaimBuilding" to="." method="_on_claim_building_pressed"]

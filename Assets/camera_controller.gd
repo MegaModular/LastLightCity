@@ -4,8 +4,8 @@ var move_speed := 10.0
 var rotate_speed := 90.0   # degrees per second
 var grid_snap := 1.0       # tile size
 
-var zoom_min := 4.0
-var zoom_max := 8.0
+var zoom_min := 1.0
+var zoom_max := 15.0
 var zoom_speed := 1.0
 
 var zoom_target := 25.0
@@ -79,6 +79,10 @@ func snap_to_grid():
 	global_position.z = snapped(global_position.z, grid_snap)
 
 func handle_click(mouse_pos: Vector2):
+	#Prevents selecting buildings through hud
+	if Globals.disableClickRaycast:
+		return
+	
 	var ray_origin = camera.project_ray_origin(mouse_pos)
 	var ray_dir = camera.project_ray_normal(mouse_pos)
 	
@@ -92,9 +96,8 @@ func handle_click(mouse_pos: Vector2):
 	var result = space_state.intersect_ray(query)
 	
 	if result.is_empty():
-		BuildingManager.clearSelection()
 		return
-
+	
 	var hit_pos: Vector3 = result.position
 	select_at_world_position(hit_pos)
 
@@ -104,5 +107,3 @@ func select_at_world_position(world_pos: Vector3):
 
 	if building:
 		BuildingManager.selectBuildingAtCell(cell)
-	else:
-		BuildingManager.clearSelection()

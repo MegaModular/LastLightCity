@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyuej8hp1budc"]
+[gd_scene load_steps=10 format=3 uid="uid://cyuej8hp1budc"]
 
 [ext_resource type="Script" uid="uid://bwihd0tkgu3m6" path="res://Gridmap/genscript.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://2udxbowgisnn" path="res://Assets/camera_controller.tscn" id="3_h2yge"]
@@ -12,10 +12,28 @@ size = Vector2(10000, 10000)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0xm2m"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(0.6747038, 0.078222014, 0.2774999, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h2yge"]
+material = SubResource("StandardMaterial3D_0xm2m")
+size = Vector3(10, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(0.2152519, 0.48254412, 0.89984787, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
+material = SubResource("StandardMaterial3D_1bvp3")
+size = Vector3(0.1, 0.1, 10)
+
 [node name="main" type="Node3D"]
 
 [node name="Buildings" type="Node3D" parent="."]
 script = ExtResource("2_0xm2m")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Connections" type="Node3D" parent="."]
 
 [node name="CameraController" parent="." instance=ExtResource("3_h2yge")]
 
@@ -33,3 +51,11 @@ mesh = SubResource("PlaneMesh_h2yge")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground/StaticBody3D"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_0xm2m")
+
+[node name="x" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0037966, 0, 0)
+mesh = SubResource("BoxMesh_h2yge")
+
+[node name="Z" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.9173956)
+mesh = SubResource("BoxMesh_lquwl")
