@@ -142,6 +142,7 @@ func removeInvalidWalls() -> void:
 		elif claimedBuildings.has(cell + Vector2i(2, 0)) && (claimedBuildings.has(cell + Vector2i(1, 1))):
 			removeWall(cell, 6)
 
+
 #Remove the walls
 func removeWall(cell, dir):
 	var pos

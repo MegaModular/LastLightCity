@@ -13,8 +13,9 @@ script = ExtResource("1_l8s4g")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 1451.0
-offset_right = 1922.0
+offset_left = 2.0
+offset_top = 869.0
+offset_right = 1916.0
 offset_bottom = 1082.0
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer"]
@@ -41,7 +42,13 @@ layout_mode = 2
 layout_mode = 2
 text = "Claim Building"
 
+[node name="CheckButton" type="CheckButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "DayNightButton"
+
 [connection signal="mouse_entered" from="PanelContainer" to="." method="_on_panel_container_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer" to="." method="_on_panel_container_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/VBoxContainer/ClaimBuilding" to="." method="_on_claim_building_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ClaimBuilding" to="." method="_on_claim_building_pressed"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]

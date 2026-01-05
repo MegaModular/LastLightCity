@@ -13,7 +13,7 @@ var buildingType
 
 var selected = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if claimed:
 		$SpotLight3D.visible = true
 	else:
