@@ -3,6 +3,7 @@ extends Node3D
 @onready var hqScene = preload('res://Gridmap/Tiles/HQ.tscn')
 @onready var defaultScene = preload('res://Gridmap/Tiles/DefaultBuilding.tscn')
 @onready var emptyScene = preload('res://Gridmap/Tiles/Empty.tscn')
+@onready var parkingLotScene = preload('res://Gridmap/Tiles/Finished Tiles/parkingLot.tscn')
 
 var gridSize : int = 50
 
@@ -26,6 +27,9 @@ func createBuilding(cell):
 	if rng == 1:
 		scene = emptyScene.instantiate()
 		enumType = BuildingManager.BUILDINGTYPE.EMPTY
+	if rng == 2:
+		scene = parkingLotScene.instantiate()
+		enumType = BuildingManager.BUILDINGTYPE.PARKINGLOT
 	if cell == Vector2i(0, 0):
 		scene = hqScene.instantiate()
 		enumType = BuildingManager.BUILDINGTYPE.HQ
@@ -39,4 +43,4 @@ func createBuilding(cell):
 		BuildingManager.claimBuilding(cell)
 
 func decideBuilding():
-	return randi_range(0, 1)
+	return randi_range(0, 2)

@@ -13,12 +13,6 @@ var buildingType
 
 var selected = false
 
-func _process(_delta: float) -> void:
-	if claimed:
-		$SpotLight3D.visible = true
-	else:
-		$SpotLight3D.visible = false
-
 func claimTile() -> void:
 	self.claimed = true
 	self.dangerLevel = 0

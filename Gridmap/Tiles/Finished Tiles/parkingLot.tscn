@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf0km6gnkuhb6"]
+
+[ext_resource type="PackedScene" uid="uid://dakls6sptvs7p" path="res://Gridmap/Tiles/BaseTile.tscn" id="1_xjohy"]
+[ext_resource type="PackedScene" uid="uid://dfjrixjnbex7y" path="res://Blender Exports/parkingLot.dae" id="2_3jcp5"]
+
+[node name="BaseTile" instance=ExtResource("1_xjohy")]
+
+[node name="parkingLot" parent="." index="2" instance=ExtResource("2_3jcp5")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)

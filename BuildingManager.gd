@@ -4,7 +4,7 @@ extends Node
 @onready var wallConnectorScene = preload('res://Gridmap/wall_face.tscn')
 
 #Variables
-enum BUILDINGTYPE{HQ, BUILDING, EMPTY}
+enum BUILDINGTYPE{HQ, BUILDING, EMPTY, PARKINGLOT}
 var tileSize = 4.0
 
 #Building Data

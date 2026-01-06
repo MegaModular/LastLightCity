@@ -13,7 +13,3 @@ script = ExtResource("1_2texd")
 shape = SubResource("BoxShape3D_dascj")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
-visible = false
